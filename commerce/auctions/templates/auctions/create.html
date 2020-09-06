@@ -1,0 +1,35 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Create Listing</h2>
+
+    <div style="display:flex;">
+    <form action="{% url 'create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input value="{{  Listing.title }}" autofocus class="form-control" type="text" name="title" placeholder="Title" maxlength="20" required>
+        </div>
+        <div class="form-group">
+            <textarea value="{{ Listing.description }}" class="form-control" type="text" name="description" maxlength="100" placeholder="A short description" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <input value="{{ Listing.price }}" min="0" max="10000" class="form-control" type="number" step="0.01" name="price" placeholder="Starting price (€)" required>
+        </div>
+        <div class="form-group">
+            <select class="form-control form-control-sm" value="{{ Listing.category }}" name="category">
+                <option selected>Uncategorized</option>
+                <option>Home</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Sports</option>
+                <option>Motors</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Upload image (OPTIONAL)</label>
+            <input value="{{ Listing.image }}" type="file" class="form-control-file" name="image">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Create">
+    </form>
+    </div>
+{% endblock %}

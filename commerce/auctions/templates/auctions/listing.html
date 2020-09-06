@@ -1,0 +1,87 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    {% if userBid == highestBid and listing.closed %}
+        <div class="alert alert-info" style="text-align: center;">You won the auction for {{ listing.title }}!</div>
+    {% endif %}
+    <h2>Listing: {{ listing.title }}</h2>
+    {% if user.is_authenticated %}
+        <form action="{% url 'watchlist' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <button class="badge badge-dark mb-3" value="{{ listing.id }}" name="item">
+                {% if onWatchlist %}
+                    Remove from Watchlist
+                {% else %}
+                    Add to Watchlist
+                {% endif %}
+            </button>
+        </form>
+    {% endif %}
+    {% if listing.image %}
+        <img class="img-fluid shadow" src="{{ listing.image.url }}"/>
+    {% endif %}
+    <p class="mt-4">{{ listing.description }}</p>
+    {% if not listing.closed %}
+        <h4>Initial Price: €{{ listing.price }}</h4>
+        {% if highestBid %}
+            <h3>Highest Bid: €{{ highestBid }}</h3>
+        {% endif %}
+        {% if user.is_authenticated %}
+            There are {{ bidCount }} bid(s) so far.
+            {% if listing.person != user %}
+                {% if userBid %}
+                    {% if userBid == highestBid %}
+                        Your current bid is the highest bid.
+                    {% else %}
+                        Your current bid is €{{ userBid }}.
+                    {% endif %}
+                {% endif %}
+            <form action="{% url 'listing' listing.id %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% if highestBid > listing.price %}
+                    <input value="{{  Bid.amount }}" autofocus class="form-control" type="number" step=0.01 min="{{ highestBid }}" max=10000 name="bid" placeholder="Bid (€)" required>
+                    {% else %}
+                    <input value="{{  Bid.amount }}" autofocus class="form-control" type="number" step=0.01 min="{{ listing.price }}" max=10000 name="bid" placeholder="Bid (€)" required>
+                    {% endif %}
+                </div>
+                <input class="btn btn-primary" type="submit" value="Place bid">
+            </form>
+            {% else %}
+                <form action="{% url 'listing' listing.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input class="btn btn-dark" type="submit" value="Close Auction">
+                    </div>  
+                </form>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <div class="alert alert-warning" style="text-align: center;">The auction for this listing is closed.</div>
+    {% endif %}
+    <h4 class="mt-4">Details</h4>
+    <ul>
+        <li>Listed by: <strong>{{ listing.person }}</strong></li>
+        <li>Category: {{ listing.category }}</li>
+    </ul>
+    <h4 class="mt-4">Comments ({{ commentCount }})</h4>
+    {% for comment in comments %}
+    <hr>
+    <div class="list-group">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><strong>{{ comment.name }}</strong></h5><span>commented on {{ comment.dateComment }}</span>
+        </div>
+        <p class="mb-1">{{ comment.text }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    {% if user.is_authenticated and not listing.closed %}
+        <form action="{% url 'listing' listing.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea value="{{ Comment.text }}" class="form-control" type="text" name="comment" maxlength="300"placeholder="Write a comment here" rows="3" required></textarea>
+            </div>
+            <input class="btn btn-light" type="submit" name="placeComment" value="Place Comment">
+        </form>
+    {% endif %}
+{% endblock %}

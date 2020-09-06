@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if good_message %}
+    <div class="alert alert-success" style="text-align: center;">{{ good_message }}</div>
+    {% endif %}
+    {% if bad_message %}
+    <div class="alert alert-danger" style="text-align: center;">{{ bad_message }}</div>
+    {% endif %}
+
+    <h2>Watchlist</h2>
+    <ul class ="list-unstyled">
+    {% for listing in watchlist %}
+    <li class="media border rounded mt-0 shadow-sm" style="height: 300px; margin: 5px; background-color: rgb(235, 235, 215);">
+        <div class="media-body">
+        <div class="img-responsive" style="height: 300px;display: flex;align-items: center;justify-content: center;">
+        {% if listing.item.image %}
+            <img class="img-fluid shadow" style="max-height: 90%;max-width: 75%;" src="{{ listing.item.image.url }}"/>
+        {% else %}
+            <i>Image Not Available</i>
+        {% endif %}
+        </div>
+        </div>
+        <div class="media-body">
+            <a style="text-decoration: none; color:black;" href="{% url 'listing' listing.item.id %}"><p><h3>{{ listing.item.title }}</h3></p></a>
+            <p>{{ listing.item.description }}</p>
+            <h4>Price: €{{ listing.item.price }}</h4>
+            <i>Created on {{ listing.item.date }}</i>
+        </div>
+    </li>
+    {% empty %}
+        <p>No listings on the watchlist.</p>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

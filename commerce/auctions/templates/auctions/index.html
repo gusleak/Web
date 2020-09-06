@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if good_message %}
+    <div class="alert alert-success" style="text-align: center;">{{ good_message }}</div>
+    {% elif bad_message %}
+    <div class="alert alert-danger" style="text-align: center;">{{ bad_message }}</div>
+    {% elif neutral_message %}
+    <div class="alert alert-light" style="text-align: center;">{{ neutral_message }}</div>
+    {% endif %}
+
+    <h2>Active Listings</h2>
+    <ul class ="list-unstyled">
+    {% for listing in listings %}
+    <li class="media border rounded mt-0 shadow-sm" style="height: 300px; margin: 5px; background-color: rgb(236, 236, 230);">
+        <div class="media-body">
+        <div style="height: 300px;display: flex;align-items: center;justify-content: center;">
+        {% if listing.image %}
+            <img class="shadow" style="max-height: 90%;max-width: 75%;" src="{{ listing.image.url }}"/>
+        {% else %}
+            <i>Image Not Available</i>
+        {% endif %}
+        </div>
+        </div>
+        <div class="media-body">
+            <a style="text-decoration: none; color:black;" href="{% url 'listing' listing.id %}"><p><h3>{{ listing.title }}</h3></p></a>
+            <p>{{ listing.description }}</p>
+            <h4>Starting Price: €{{ listing.price }}</h4>
+            <i>Created on {{ listing.date }}</i>
+        </div>
+    </li>
+    {% empty %}
+        <p>No active listings.</p>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
