@@ -1,0 +1,67 @@
+textarea {
+    min-height: 400px;
+}
+
+#message-alert {
+    text-align: center;
+    display: none;
+    animation-name: appear;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0%;
+    }   
+    to {
+        opacity: 100%;
+    }
+}
+
+.emails-list {
+    padding: 10px;
+    cursor: pointer;
+    block-size: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+}
+
+.emails-view-sender {
+    width: 220px;
+    overflow: visible;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emails-view-subject {
+    margin-left: 20px;
+    width: 660px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emails-view-timestamp {
+    font-size: small;
+    margin-left: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#archive {
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+#reply {
+    margin-top: 5px;
+}
+
+#submit-compose-form {
+    margin-top: 5px;
+}
