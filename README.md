@@ -8,7 +8,7 @@ https://youtu.be/CEBifGZhtjg
 An auction-like web app where users can add listings, submit bids, place comments, add to their watchlist, and categorize.\
 https://youtu.be/dIt_qXZVBLk
 
-- **[wiki](https://github.com/gusleak/Web/tree/master/mail)**\
+- **[mail](https://github.com/gusleak/Web/tree/master/mail)**\
 An email client for registered users in the database.\
 https://youtu.be/N5hzSD1uW6o
 
