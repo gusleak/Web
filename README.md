@@ -1,11 +1,12 @@
 # Web Apps
 The projects are developed with Django.
-To clone the repository:```git clone https://github.com/gusleak/Web/```\
+To clone the repository:```git clone https://github.com/gusleak/Web/```
 To set up the database, change into the app directory and run:
-```python manage.py makemigrations```\
-```python manage.py migrate```\
+```python manage.py makemigrations
+   python manage.py migrate
+```
 To host the app on the local server:
-```python manage.py runserver```\
+```python manage.py runserver```
 
 - **[Google](https://github.com/gusleak/Web/tree/master/Google)**\
 Illustration of Google's Front-End environment, including basic search, image, and advanced search.\
