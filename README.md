@@ -1,6 +1,6 @@
 # Web Apps
 The projects are developed with Django.
-To clone the repository:```git clone https://github.com/gusleak/Web/```
+To clone the repository: ```git clone https://github.com/gusleak/Web/```
 To set up the database, change into the app directory and run:
 ```python manage.py makemigrations
    python manage.py migrate
