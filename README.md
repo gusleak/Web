@@ -1,5 +1,5 @@
 # Web Apps
-The projects are developed with Django.
+The projects are developed with Django (except Google).
 Clone the repository with ```git clone https://github.com/gusleak/Web/```.\
 To set up the database, change into the app directory and run:
 ```
