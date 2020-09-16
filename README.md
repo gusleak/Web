@@ -1,5 +1,5 @@
 # Web Apps
-The projects are developed with Django (except Google).
+The projects are developed with Django (except for Google).
 After cloning the repository, change into the app directory.\
 To set up the database, run:
 ```
