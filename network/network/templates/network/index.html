@@ -1,0 +1,46 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div id="all-posts">
+    <h1>All Posts</h1>
+    {% if user.is_authenticated %}
+    <div class="border rounded-bottom p-5">
+        <div class="alert alert-info alert-dismissible fade show" role="alert" id="message-alert">
+            <strong>Post submitted successfully!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form id="compose-form">
+            <div class="form-group">
+                <label>What's on your mind?</label>
+                <textarea class="form-control" id="new-post-body" placeholder="Write your post here ..." rows="3" required></textarea>
+            </div>
+            <button class="btn btn-primary">Post</button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="border rounded p-5" id="posts-box"></div>
+    <nav id="pagi-nav">
+        <ul class="pagination justify-content-center mt-2" id="pagi-list"></ul>
+    </nav>
+</div>
+
+
+<div id="following">
+    <h1>Following Posts</h1>
+    <div class="border rounded p-5" id="following-posts-box"></div>
+    <nav id="following-pagi-nav">
+        <ul class="pagination justify-content-center mt-2" id="following-pagi-list"></ul>
+    </nav>
+</div>
+
+
+<div id="user-profile"></div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
