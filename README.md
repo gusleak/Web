@@ -22,6 +22,10 @@ https://youtu.be/dIt_qXZVBLk
 An email client for registered users in the database.\
 https://youtu.be/N5hzSD1uW6o
 
+- **[network](https://github.com/gusleak/Web/tree/master/network)**\
+A twitter-like application, where registered users can submit posts, follow others, and like their posts.\
+https://youtu.be/xx3_xZvsbYY
+
 - **[wiki](https://github.com/gusleak/Web/tree/master/wiki)**\
 A wiki-like web app which converts entries from Markdown to HTML and includes 'search', 'create', 'edit' functionalities.\
 https://youtu.be/mdqndGouu7I
