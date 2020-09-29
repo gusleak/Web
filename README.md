@@ -28,7 +28,7 @@ https://youtu.be/N5hzSD1uW6o
 
 - **[network](https://github.com/gusleak/Web/tree/master/network)**\
 A twitter-like application, where registered users can submit posts, follow others, and like their posts.\
-https://youtu.be/xx3_xZvsbYY\\
+https://youtu.be/xx3_xZvsbYY
 
 
 - **[wiki](https://github.com/gusleak/Web/tree/master/wiki)**\
